@@ -43,19 +43,19 @@ void BulletType::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_custom_data", "data"), &BulletType::set_custom_data);
     ClassDB::bind_method(D_METHOD("get_custom_data"), &BulletType::get_custom_data);
 
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "initialSpeed"), "set_initial_speed", "get_initial_speed");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::OBJECT, "_shape", PROPERTY_HINT_RESOURCE_TYPE, "Shape2D"), "set_shape", "get_shape");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "initial_speed"), "set_initial_speed", "get_initial_speed");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::OBJECT, "shape", PROPERTY_HINT_RESOURCE_TYPE, "Shape2D"), "set_shape", "get_shape");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "scale"), "set_scale", "get_scale");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "acceleration"), "set_acceleration", "get_acceleration");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "maxLifetime"), "set_max_lifetime", "get_max_lifetime");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "animationSpeed"), "set_animation_speed", "get_animation_speed");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "minSpeed"), "set_min_speed", "get_min_speed");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "maxSpeed"), "set_max_speed", "get_max_speed");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "max_lifetime"), "set_max_lifetime", "get_max_lifetime");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "animation_speed"), "set_animation_speed", "get_animation_speed");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "min_speed"), "set_min_speed", "get_min_speed");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "max_speed"), "set_max_speed", "get_max_speed");
     ClassDB::add_property_group("BulletType", "Collision", "");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::INT, "mask", PROPERTY_HINT_LAYERS_2D_PHYSICS), "set_mask", "get_mask");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::INT, "numberOfQueries"), "set_number_of_queries", "get_number_of_queries");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collideWithBodies"), "set_collide_with_bodies", "get_collide_with_bodies");
-    ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collideWithAreas"), "set_collide_with_areas", "get_collide_with_areas");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::INT, "number_of_queries"), "set_number_of_queries", "get_number_of_queries");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collide_with_bodies"), "set_collide_with_bodies", "get_collide_with_bodies");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collide_with_areas"), "set_collide_with_areas", "get_collide_with_areas");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::DICTIONARY, "custom_data"), "set_custom_data", "get_custom_data");
 }
 

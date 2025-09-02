@@ -124,51 +124,51 @@ void Spawner::_bind_methods() {
 
     //Properties that the user will see as export variables
     //These properties are in the order that is displayed in the node
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "startMode", PROPERTY_HINT_ENUM, "ONSTART, PATTERNMANAGER, MANUAL"), "set_start_mode", "get_start_mode");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "spawnerMode", PROPERTY_HINT_ENUM, "PROCESS, PHYSICS"), "set_spawner_mode", "get_spawner_mode");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::OBJECT, "bulletType", PROPERTY_HINT_RESOURCE_TYPE, "BulletType"), "set_bullet_type", "get_bullet_type");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "ID"), "set_id", "get_id");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "start_mode", PROPERTY_HINT_ENUM, "ONSTART, PATTERNMANAGER, MANUAL"), "set_start_mode", "get_start_mode");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "spawner_mode", PROPERTY_HINT_ENUM, "PROCESS, PHYSICS"), "set_spawner_mode", "get_spawner_mode");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::OBJECT, "bullet_type", PROPERTY_HINT_RESOURCE_TYPE, "BulletType"), "set_bullet_type", "get_bullet_type");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "id"), "set_id", "get_id");
 
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "numberOfShots"), "set_number_of_shots", "get_number_of_shots");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "poolCount"), "set_pool_count", "get_pool_count");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "fireRate"), "set_fire_rate", "get_fire_rate");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "fireRadiusDegrees"), "set_fire_radius_degrees", "get_fire_radius_degrees");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "bulletsPerRadius"), "set_bullets_per_radius", "get_bullets_per_radius");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "numberOfRadii"), "set_number_of_radii", "get_number_of_radii");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "degreesBetweenRadii"), "set_degrees_between_radii", "get_degrees_between_radii");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "startRotation"), "set_start_rotation", "get_start_rotation");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "number_of_shots"), "set_number_of_shots", "get_number_of_shots");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "pool_count"), "set_pool_count", "get_pool_count");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "fire_rate"), "set_fire_rate", "get_fire_rate");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "fire_radius_degrees"), "set_fire_radius_degrees", "get_fire_radius_degrees");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "bullets_per_radius"), "set_bullets_per_radius", "get_bullets_per_radius");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "number_of_radii"), "set_number_of_radii", "get_number_of_radii");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "degrees_between_radii"), "set_degrees_between_radii", "get_degrees_between_radii");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "start_rotation"), "set_start_rotation", "get_start_rotation");
 
     ClassDB::add_property_group("Spawner", "Spin", "");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "spinRate"), "set_spin_rate", "get_spin_rate");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "maxSpin"), "set_max_spin", "get_max_spin");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "minSpin"), "set_min_spin", "get_min_spin");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "spinAcceleration"), "set_spin_acceleration", "get_spin_acceleration");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "restartAtSpin"), "set_restart_at_spin", "get_restart_at_spin");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "spin_rate"), "set_spin_rate", "get_spin_rate");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "max_spin"), "set_max_spin", "get_max_spin");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "min_spin"), "set_min_spin", "get_min_spin");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "spin_acceleration"), "set_spin_acceleration", "get_spin_acceleration");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "restart_at_spin"), "set_restart_at_spin", "get_restart_at_spin");
     
     ClassDB::add_property_group("Spawner", "Player Tracking", "");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::OBJECT, "trackedNode", PROPERTY_HINT_NODE_TYPE, "Node2D"), "set_tracked_node", "get_tracked_node");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::OBJECT, "tracked_node", PROPERTY_HINT_NODE_TYPE, "Node2D"), "set_tracked_node", "get_tracked_node");
     ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "homing"), "set_homing", "get_homing");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "homingWeight"), "set_homing_weight", "get_homing_weight");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "startTowardPlayer"), "set_start_toward_player", "get_start_toward_player");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "staysTowardPlayer"), "set_stays_toward_player", "get_stays_toward_player");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "offsetTowardPlayer"), "set_offset_toward_player", "get_offset_toward_player");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "homing_weight"), "set_homing_weight", "get_homing_weight");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "start_toward_player"), "set_start_toward_player", "get_start_toward_player");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "stays_toward_player"), "set_stays_toward_player", "get_stays_toward_player");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "offset_toward_player"), "set_offset_toward_player", "get_offset_toward_player");
 
     ClassDB::add_property_group("Spawner", "Animation", "");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "rowsInAtlas"), "set_rows_in_atlas", "get_rows_in_atlas");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "columnsInAtlas"), "set_columns_in_atlas", "get_columns_in_atlas");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "rows_in_atlas"), "set_rows_in_atlas", "get_rows_in_atlas");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::INT, "columns_in_atlas"), "set_columns_in_atlas", "get_columns_in_atlas");
     
     ClassDB::add_property_group("Spawner", "Random", "");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "randomStart"), "set_random", "get_random");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "randomRadius"), "set_random_radius", "get_random_radius");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "random_start"), "set_random", "get_random");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "random_radius"), "set_random_radius", "get_random_radius");
 
     ClassDB::add_property_group("Spawner", "Misc.", "");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "moveWithParent"), "set_move_with_parent", "get_move_with_parent");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "returnBulletsToPoolAutomatically"), "set_return_bullets_to_pool_automatically", "get_return_bullets_to_pool_automatically");
-    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "textureRotation"), "set_texture_rotation", "get_texture_rotation");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "move_with_parent"), "set_move_with_parent", "get_move_with_parent");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "return_bullets_toPool_automatically"), "set_return_bullets_to_pool_automatically", "get_return_bullets_to_pool_automatically");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "texture_rotation"), "set_texture_rotation", "get_texture_rotation");
     ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "gravity"), "set_gravity", "get_gravity");
     
     //Binding signals
-    ADD_SIGNAL(MethodInfo("bullet_hit", PropertyInfo(Variant::ARRAY, "result"), PropertyInfo(Variant::INT, "bulletIndex"), PropertyInfo(Variant::OBJECT, "spawner")));
+    ADD_SIGNAL(MethodInfo("bullet_hit", PropertyInfo(Variant::ARRAY, "result"), PropertyInfo(Variant::INT, "bullet_index"), PropertyInfo(Variant::OBJECT, "spawner")));
 }
 
 void Spawner::_ready()
