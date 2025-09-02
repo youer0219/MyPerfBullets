@@ -9,6 +9,8 @@
 #include "spawner.h"
 #include "bullet_type.h"
 #include "bulProps.h"
+#include "bullet_attachment2d.hpp"
+#include "bullet_attachment_object_pool2d.hpp"
 
 using namespace godot;
 
@@ -20,6 +22,7 @@ void initialize_spawner_module(ModuleInitializationLevel p_level) {
 	ClassDB::register_class<Spawner>();
 	ClassDB::register_class<BulletType>();
 	ClassDB::register_class<BulProps>();
+    ClassDB::register_class<BlastBullets2D::BulletAttachment2D>();
 }
 
 void uninitialize_spawner_module(ModuleInitializationLevel p_level) {

@@ -5,6 +5,7 @@
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/mesh_instance2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/packed_scene.hpp> 
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/engine.hpp>
@@ -30,6 +31,7 @@ private:
     float scale = 1.0;
     int numberOfQueries = 1;
     Dictionary custom_data;
+    Ref<PackedScene> attachment_scene; // 单个附加节点场景
 
 public:
     static void _bind_methods();
@@ -80,6 +82,9 @@ public:
 
     void set_custom_data(const Dictionary &p_data);
     Dictionary get_custom_data() const;
+
+    void set_attachment_scene(const Ref<PackedScene> &p_scene);
+    Ref<PackedScene> get_attachment_scene() const;
 
 };
 

@@ -43,6 +43,9 @@ void BulletType::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_custom_data", "data"), &BulletType::set_custom_data);
     ClassDB::bind_method(D_METHOD("get_custom_data"), &BulletType::get_custom_data);
 
+    ClassDB::bind_method(D_METHOD("set_attachment_scene", "scene"), &BulletType::set_attachment_scene);
+    ClassDB::bind_method(D_METHOD("get_attachment_scene"), &BulletType::get_attachment_scene);
+
     ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "initial_speed"), "set_initial_speed", "get_initial_speed");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::OBJECT, "shape", PROPERTY_HINT_RESOURCE_TYPE, "Shape2D"), "set_shape", "get_shape");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::FLOAT, "scale"), "set_scale", "get_scale");
@@ -57,6 +60,8 @@ void BulletType::_bind_methods() {
     ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collide_with_bodies"), "set_collide_with_bodies", "get_collide_with_bodies");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collide_with_areas"), "set_collide_with_areas", "get_collide_with_areas");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::DICTIONARY, "custom_data"), "set_custom_data", "get_custom_data");
+    ClassDB::add_property("BulletType", PropertyInfo(Variant::OBJECT, "attachment_scene", PROPERTY_HINT_RESOURCE_TYPE, "PackedScene"), "set_attachment_scene", "get_attachment_scene");
+
 }
 
 BulletType::BulletType() {
@@ -169,4 +174,12 @@ void BulletType::set_custom_data(const Dictionary &p_data) {
 
 Dictionary BulletType::get_custom_data() const {
     return custom_data;
+}
+
+void BulletType::set_attachment_scene(const Ref<PackedScene> &p_scene) {
+    attachment_scene = p_scene;
+}
+
+Ref<PackedScene> BulletType::get_attachment_scene() const {
+    return attachment_scene;
 }
