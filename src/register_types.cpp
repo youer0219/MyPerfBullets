@@ -9,7 +9,7 @@
 #include "spawner.h"
 #include "bullet_type.h"
 #include "bulProps.h"
-#include "bullet_attachment2d.hpp"
+#include "bullet_attachment2d.h"
 
 using namespace godot;
 

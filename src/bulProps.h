@@ -14,7 +14,7 @@
 
 class Spawner;
 class BulletType;
-#include <bullet_attachment2d.hpp>
+#include <bullet_attachment2d.h>
 
 using namespace godot;
 

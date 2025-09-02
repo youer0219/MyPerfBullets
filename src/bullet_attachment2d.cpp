@@ -1,4 +1,4 @@
-#include "bullet_attachment2d.hpp"
+#include "bullet_attachment2d.h"
 #include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
