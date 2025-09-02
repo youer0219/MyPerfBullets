@@ -176,6 +176,9 @@ void Spawner::_ready()
     //This runs in the editor as well, so this check SHOULD only allow the main code to run after runtime
     if (!Engine::get_singleton()->is_editor_hint()){
 
+        attachment_pool.instantiate();
+        attachment_pool->set_parent_node(this); // 将附件作为spawner的子节点
+
         if (get_multimesh() != nullptr){
             multi = get_multimesh();
         }
@@ -274,7 +277,11 @@ void Spawner::start_node(int id){
 
 void Spawner::_on_tree_exiting()
 {
+    if (attachment_pool.is_valid()) {
+        attachment_pool->clear_all_pools();
+    }
 	bullets.clear();
+    
 }
 
 Spawner::~Spawner()
@@ -307,6 +314,19 @@ void Spawner::spawn_bullet_self(Vector2 dir) {
                 if (bul->get_shape_rid() == RID()) {
                     _add_shape(bul);
                     bul->get_query()->set_shape_rid(bul->get_shape_rid());
+                }
+                
+                // 处理附件
+                Ref<PackedScene> attachment_scene = bulletType->get_attachment_scene();
+                if (attachment_scene.is_valid()) {
+                    // 从池中获取附件
+                    BulletAttachment2D* attachment = attachment_pool->get_attachment(attachment_scene);
+                    if (attachment) {
+                        // 设置附件初始位置
+                        attachment->set_global_position(bul->get_position());
+                        // 保存附件引用到子弹运行时数据
+                        bul->set_bullet_attachment(attachment);
+                    }
                 }
 
                 //Get the angle of that velocity to set as the rotation
@@ -562,6 +582,12 @@ void Spawner::calc_vel(Ref<BulProps> bul, float delta){
     float calculated_speed = bul->get_speed() + bulletType->get_acceleration() *delta;
     float clamped = UtilityFunctions::clampf(calculated_speed, bulletType->get_min_speed(), bulletType->get_max_speed());
     bul->set_speed(clamped);
+
+    BulletAttachment2D* attachment = bul->get_bullet_attachment();
+    if (attachment && attachment->is_active()) {
+        attachment->set_global_position(bul->get_position());
+    }
+
 }
 
 //Every frame, moves the custom data around to adjust what the shader reads, moving the UVs to produce aniamtion based on spritesheets
@@ -596,6 +622,12 @@ void Spawner::free_bullet_to_pool(int idx){
     bul->set_animation_lifetime(0.0);
     bul->set_direction(Vector2());
     bul->set_speed(0.0);
+
+    BulletAttachment2D* attachment = bul->get_bullet_attachment();
+    if (attachment) {
+        attachment_pool->return_attachment(attachment);
+        bul->set_bullet_attachment(nullptr); // 清除引用
+    }
 }
 
 //Clears the Array of visible bullets, then iterates over all of the bullets to turn them all off

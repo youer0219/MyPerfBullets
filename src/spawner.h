@@ -32,6 +32,7 @@
 
 #include "bullet_type.h"
 #include "bulProps.h"
+#include "bullet_attachment2d_pool.h"
 
 using namespace godot;
 
@@ -101,6 +102,7 @@ private:
     PhysicsDirectSpaceState2D* space_state = nullptr;
     int currentRow = 1;
     int currentColumn = 1;
+    Ref<BulletAttachment2DPool> attachment_pool;
 
 public:
     static void _bind_methods();
