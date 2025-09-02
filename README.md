@@ -29,7 +29,7 @@
   <img src="https://github.com/Moonzel/Public_Gifs_For_Projects_Moonzel/blob/main/StressDemo.gif" width="480" />
 </p>
 
-此插件适用于 **GDExtension**，仅与 Godot 4.4.1 兼容，且仅支持移动端或 Forward+ 渲染器。<br>
+此插件适用于 **GDExtension**，与 Godot 4.4.1 兼容，应该支持更高版本，但很可能不支持更低版本，且仅支持移动端或 Forward+ 渲染器。<br>
 
 包含的版本已预编译，适用于 Windows。
 
@@ -95,10 +95,11 @@ TODO:未来将会在Godot编辑器中可见
 
 #### 使用 C++ 编辑插件的步骤
 *假设您已在当前项目中安装了插件*
-0. 参考[how-to-install-c-and-cpp-compiler-on-windows](https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/)下载C++
-1. 从 https://github.com/godotengine/godot-cpp 下载相应分支（您的版本）的 C++ 代码。
-2. 将 `godot-cpp-4.x` 文件夹粘贴到 `addons/PerfBullets` 文件夹中。
-3. 下载 SCons：
+
+1. 参考[how-to-install-c-and-cpp-compiler-on-windows](https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/)下载安装C++
+2. 从 https://github.com/godotengine/godot-cpp 下载相应分支（您的版本）的 C++ 代码。
+3. 将 `godot-cpp-4.x` 文件夹粘贴到 `addons/PerfBullets` 文件夹中。
+4. 下载 SCons：
    - 打开 Windows PowerShell 或终端。
    - 运行 `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`。
    - 如果提示，按 "Y"。
@@ -106,7 +107,8 @@ TODO:未来将会在Godot编辑器中可见
    - 最后运行 `scoop install gcc python scons make mingw`。
 5. 将 `godot-cpp-4.x` 重命名为 `godot-cpp`。
 6. 进入 `godot-cpp` 文件夹，并在该位置打开终端或命令行（使用 cd 命令）。
-7. 运行 `scons`，等待绑定安装完成。个人不建议在 vscode 终端中编译，因为速度会很慢很慢。
+    - TODO:不清楚直接在`addons/PerfBullets` 文件夹编译会如何。因为后面发现godot-cpp似乎编译了两次。
+7. 运行 `scons`，等待绑定安装完成。个人不建议在 vscode 终端中编译，因为速度会很慢很慢！
 8. 在代码编辑器（如 Visual Studio）中打开插件。
    - 确保所选代码编辑器中的所有路径都正确，以免出现错误。
 9. 对插件进行更改。
