@@ -30,6 +30,7 @@
 </p>
 
 此插件适用于 **GDExtension**，与 Godot 4.4.1 兼容，应该支持更高版本，但很可能不支持更低版本，且仅支持移动端或 Forward+ 渲染器。<br>
+此插件适用于 **GDExtension**，与 Godot 4.4.1 兼容，应该支持更高版本，但很可能不支持更低版本，且仅支持移动端或 Forward+ 渲染器。<br>
 
 包含的版本已预编译，适用于 Windows。
 
@@ -107,6 +108,8 @@ TODO:未来将会在Godot编辑器中可见
    - 最后运行 `scoop install gcc python scons make mingw`。
 5. 将 `godot-cpp-4.x` 重命名为 `godot-cpp`。
 6. 进入 `godot-cpp` 文件夹，并在该位置打开终端或命令行（使用 cd 命令）。
+    - TODO:不清楚直接在`addons/PerfBullets` 文件夹编译会如何。因为后面发现godot-cpp似乎编译了两次。
+7. 运行 `scons`，等待绑定安装完成。个人不建议在 vscode 终端中编译，因为速度会很慢很慢！
     - TODO:不清楚直接在`addons/PerfBullets` 文件夹编译会如何。因为后面发现godot-cpp似乎编译了两次。
 7. 运行 `scons`，等待绑定安装完成。个人不建议在 vscode 终端中编译，因为速度会很慢很慢！
 8. 在代码编辑器（如 Visual Studio）中打开插件。
