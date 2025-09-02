@@ -33,7 +33,10 @@ void BulProps::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("set_runtime_data", "data"), &BulProps::set_runtime_data);
     ClassDB::bind_method(D_METHOD("get_runtime_data"), &BulProps::get_runtime_data);
-    
+
+    ClassDB::bind_method(D_METHOD("set_bullet_attachment", "attachment"), &BulProps::set_bullet_attachment);
+    ClassDB::bind_method(D_METHOD("get_bullet_attachment"), &BulProps::get_bullet_attachment);
+
     ClassDB::add_property("BulProps", PropertyInfo(Variant::RID, "shape_rid"), "set_shape_rid", "get_shape_rid");
     ClassDB::add_property("BulProps", PropertyInfo(Variant::VECTOR2, "position"), "set_position", "get_position");
     ClassDB::add_property("BulProps", PropertyInfo(Variant::VECTOR2, "last_increment"), "set_last_increment", "get_last_increment");
@@ -42,6 +45,8 @@ void BulProps::_bind_methods() {
     ClassDB::add_property("BulProps", PropertyInfo(Variant::FLOAT, "speed"), "set_speed", "get_speed");
     ClassDB::add_property("BulProps", PropertyInfo(Variant::OBJECT, "bullet_type", PROPERTY_HINT_RESOURCE_TYPE, "BulletType"), "set_bullet_type_ref", "get_bullet_type_ref");
     ClassDB::add_property("BulProps", PropertyInfo(Variant::DICTIONARY, "runtime_data"), "set_runtime_data", "get_runtime_data");
+    ClassDB::add_property("BulProps", PropertyInfo(Variant::OBJECT, "bullet_attachment", PROPERTY_HINT_NODE_TYPE, "BulletAttachment2D"), "set_bullet_attachment", "get_bullet_attachment");
+
 }
 
 BulProps::BulProps() {
@@ -128,4 +133,12 @@ void BulProps::set_runtime_data(const Dictionary &p_data) {
 
 Dictionary BulProps::get_runtime_data() const {
     return runtime_data;
+}
+
+void BulProps::set_bullet_attachment(BlastBullets2D::BulletAttachment2D* attachment) {
+    bullet_attachment = attachment;
+}
+
+BlastBullets2D::BulletAttachment2D* BulProps::get_bullet_attachment() const {
+    return bullet_attachment;
 }
