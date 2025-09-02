@@ -22,7 +22,9 @@ void initialize_spawner_module(ModuleInitializationLevel p_level) {
 	ClassDB::register_class<BulletType>();
 	ClassDB::register_class<BulProps>();
     ClassDB::register_class<BulletAttachment2D>();
+    ClassDB::register_class<BulletAttachment2DPool>();
 }
+
 
 void uninitialize_spawner_module(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {

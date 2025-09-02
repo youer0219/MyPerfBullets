@@ -17,13 +17,10 @@ private:
     // 使用资源作为键的分组池
     HashMap<Ref<PackedScene>, Vector<BulletAttachment2D*>> resource_pools;
     Node* parent_node = nullptr;
-    
+
 protected:
-    // 只需要基本的类注册，不需要方法绑定
-    static void _bind_methods() {
-        // 空实现或只做最基本的类注册
-    }
-    
+    static void _bind_methods();
+
 public:
     // 设置父节点（附件将被添加为其子节点）
     void set_parent_node(Node* parent) { parent_node = parent; }

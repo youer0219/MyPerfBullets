@@ -4,6 +4,22 @@
 using namespace godot;
 
 // 实现文件只需要包含方法实现，不需要_bind_methods
+void BulletAttachment2DPool::_bind_methods() {
+    // 添加基本的类注册
+    ClassDB::bind_method(D_METHOD("set_parent_node", "parent"), &BulletAttachment2DPool::set_parent_node);
+    ClassDB::bind_method(D_METHOD("get_parent_node"), &BulletAttachment2DPool::get_parent_node);
+    ClassDB::bind_method(D_METHOD("get_attachment", "scene"), &BulletAttachment2DPool::get_attachment);
+    ClassDB::bind_method(D_METHOD("return_attachment", "attachment"), &BulletAttachment2DPool::return_attachment);
+    ClassDB::bind_method(D_METHOD("prepopulate", "scene", "count"), &BulletAttachment2DPool::prepopulate);
+    ClassDB::bind_method(D_METHOD("clear_pool_for_resource", "scene"), &BulletAttachment2DPool::clear_pool_for_resource);
+    ClassDB::bind_method(D_METHOD("clear_all_pools"), &BulletAttachment2DPool::clear_all_pools);
+    ClassDB::bind_method(D_METHOD("get_pool_info"), &BulletAttachment2DPool::get_pool_info);
+    
+    // 添加属性
+    ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "parent_node", PROPERTY_HINT_NODE_TYPE, "Node"), "set_parent_node", "get_parent_node");
+}
+
+
 BulletAttachment2D* BulletAttachment2DPool::get_attachment(const Ref<PackedScene>& scene) {
     if (scene.is_null() || !scene->can_instantiate()) {
         UtilityFunctions::printerr("BulletAttachment2DPool: Invalid scene resource provided");
