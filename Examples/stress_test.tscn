@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://c0vtdxn7ejeyq"]
 
 [ext_resource type="PackedScene" uid="uid://duq34uom7vsr6" path="res://addons/PerfBullets/Examples/player.tscn" id="1_avarm"]
-[ext_resource type="Texture2D" uid="uid://bq4fs3pbpvdwl" path="res://addons/PerfBullets/test_bullet_animation_sheet.png" id="2_11ilv"]
-[ext_resource type="Script" path="res://addons/PerfBullets/GDScript_Classes/PatternManager.gd" id="3_m01w1"]
-[ext_resource type="Script" path="res://addons/PerfBullets/GDScript_Classes/PatternSpawnerData.gd" id="4_1d6c2"]
-[ext_resource type="Script" path="res://addons/PerfBullets/GDScript_Classes/BulletBorder.gd" id="4_ajfw1"]
+[ext_resource type="Texture2D" uid="uid://cwfrqhc4bodem" path="res://addons/PerfBullets/test_bullet_animation_sheet.png" id="2_11ilv"]
+[ext_resource type="Script" uid="uid://sggaug1xim8i" path="res://addons/PerfBullets/GDScript_Classes/PatternManager.gd" id="3_m01w1"]
+[ext_resource type="Script" uid="uid://cyyi3u8a5elf" path="res://addons/PerfBullets/GDScript_Classes/PatternSpawnerData.gd" id="4_1d6c2"]
+[ext_resource type="Script" uid="uid://drjvqom0sfe2d" path="res://addons/PerfBullets/GDScript_Classes/BulletBorder.gd" id="4_ajfw1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o13wm"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pet0"]
 
-[sub_resource type="BulletType" id="BulletType_qanfv"]
-_shape = SubResource("CircleShape2D_o13wm")
-animationSpeed = 1.0
+[sub_resource type="BulletType" id="BulletType_3duei"]
+shape = SubResource("CircleShape2D_5pet0")
+animation_speed = 1.0
 
 [sub_resource type="Resource" id="Resource_v3xfk"]
 script = ExtResource("4_1d6c2")
@@ -19,27 +19,26 @@ time = 0.5
 timerMode = 0
 
 [node name="Game" type="Node2D"]
-position = Vector2(1, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_avarm")]
 position = Vector2(575, 536)
 power = 400.0
 
-[node name="Time1" type="Spawner" parent="." node_paths=PackedStringArray("trackedNode") groups=["Spawner"]]
-startMode = 1
-bulletType = SubResource("BulletType_qanfv")
-poolCount = 10000
-fireRate = 0.042
-bulletsPerRadius = 75
-degreesBetweenRadii = 180.0
-maxSpin = 0.5
-minSpin = -2.0
-spinAcceleration = 1.0
-restartAtSpin = false
-trackedNode = NodePath("../Player")
-homingWeight = 0.1
-rowsInAtlas = 2
-columnsInAtlas = 2
+[node name="Time1" type="Spawner" parent="." node_paths=PackedStringArray("tracked_node") groups=["Spawner"]]
+start_mode = 1
+bullet_type = SubResource("BulletType_3duei")
+pool_count = 10000
+fire_rate = 0.042
+bullets_per_radius = 75
+degrees_between_radii = 180.0
+max_spin = 0.5
+min_spin = -2.0
+spin_acceleration = 1.0
+restart_at_spin = false
+tracked_node = NodePath("../Player")
+homing_weight = 0.1
+rows_in_atlas = 2
+columns_in_atlas = 2
 position = Vector2(543, 193)
 texture = ExtResource("2_11ilv")
 
