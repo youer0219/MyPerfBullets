@@ -135,10 +135,10 @@ Dictionary BulProps::get_runtime_data() const {
     return runtime_data;
 }
 
-void BulProps::set_bullet_attachment(BlastBullets2D::BulletAttachment2D* attachment) {
+void BulProps::set_bullet_attachment(BulletAttachment2D* attachment) {
     bullet_attachment = attachment;
 }
 
-BlastBullets2D::BulletAttachment2D* BulProps::get_bullet_attachment() const {
+BulletAttachment2D* BulProps::get_bullet_attachment() const {
     return bullet_attachment;
 }

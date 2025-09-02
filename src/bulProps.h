@@ -35,7 +35,7 @@ private:
 
     Ref<BulletType> bullet_type_ref;
     Dictionary runtime_data;          
-    BlastBullets2D::BulletAttachment2D* bullet_attachment = nullptr;  // Reference to the attachment node
+    BulletAttachment2D* bullet_attachment = nullptr;  // Reference to the attachment node
 
 public:
     static void _bind_methods();
@@ -73,8 +73,8 @@ public:
     void set_runtime_data(const Dictionary &p_data);
     Dictionary get_runtime_data() const;
     
-    void set_bullet_attachment(BlastBullets2D::BulletAttachment2D* attachment);
-    BlastBullets2D::BulletAttachment2D* get_bullet_attachment() const;
+    void set_bullet_attachment(BulletAttachment2D* attachment);
+    BulletAttachment2D* get_bullet_attachment() const;
 };
 
 #endif // BULPROPS_H
