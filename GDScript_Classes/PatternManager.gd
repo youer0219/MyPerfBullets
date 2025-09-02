@@ -14,11 +14,11 @@ var spawners: Array
 func _ready():
 	spawners = find_spawners(get_parent())
 	for i in data:
-		var spawnerToUse
-		for j in spawners:
-			if j.ID == i.ID:
+		var spawnerToUse:Spawner
+		for j:Spawner in spawners:
+			if j.id == i.ID:
 				spawnerToUse = j
-		if spawnerToUse.startMode == 1:
+		if spawnerToUse.start_mode == 1:
 			connect("start", Callable(spawnerToUse, "start_node"))
 		var timer = Timer.new()
 		timer.wait_time = i.time
