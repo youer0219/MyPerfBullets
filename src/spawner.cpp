@@ -322,8 +322,9 @@ void Spawner::spawn_bullet_self(Vector2 dir) {
                     // 从池中获取附件
                     BulletAttachment2D* attachment = attachment_pool->get_attachment(attachment_scene);
                     if (attachment) {
-                        // 设置附件初始位置
                         attachment->set_global_position(bul->get_position());
+                        attachment->set_spawner(this);
+                        attachment->set_bullet_data(bul.ptr());
                         // 保存附件引用到子弹运行时数据
                         bul->set_bullet_attachment(attachment);
                     }
@@ -625,6 +626,7 @@ void Spawner::free_bullet_to_pool(int idx){
 
     BulletAttachment2D* attachment = bul->get_bullet_attachment();
     if (attachment) {
+        attachment->clear_references();
         attachment_pool->return_attachment(attachment);
         bul->set_bullet_attachment(nullptr); // 清除引用
     }
