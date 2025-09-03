@@ -60,6 +60,7 @@ void BulletType::_bind_methods() {
     ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collide_with_bodies"), "set_collide_with_bodies", "get_collide_with_bodies");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::BOOL, "collide_with_areas"), "set_collide_with_areas", "get_collide_with_areas");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::DICTIONARY, "custom_data"), "set_custom_data", "get_custom_data");
+    ClassDB::add_property_group("BulletType", "AttachmentNode", "");
     ClassDB::add_property("BulletType", PropertyInfo(Variant::OBJECT, "attachment_scene", PROPERTY_HINT_RESOURCE_TYPE, "PackedScene"), "set_attachment_scene", "get_attachment_scene");
 
 }
