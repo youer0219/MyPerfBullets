@@ -1,3 +1,4 @@
 *.import
 
 godot-cpp/
+bin/~spawner.windows.template_debug.x86_64.dll
