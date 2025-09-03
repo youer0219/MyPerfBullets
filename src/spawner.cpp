@@ -121,6 +121,11 @@ void Spawner::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_manual_start"), &Spawner::get_manual_start);
 
     ClassDB::bind_method(D_METHOD("get_active_bullets"), &Spawner::get_active_bullets);
+// 在绑定方法部分添加
+ClassDB::bind_method(D_METHOD("set_disable_physics", "value"), &Spawner::set_disable_physics);
+ClassDB::bind_method(D_METHOD("get_disable_physics"), &Spawner::get_disable_physics);
+
+// 在属性部分添加（可以放在"Misc."组）
 
     //Properties that the user will see as export variables
     //These properties are in the order that is displayed in the node
@@ -166,9 +171,12 @@ void Spawner::_bind_methods() {
     ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "return_bullets_toPool_automatically"), "set_return_bullets_to_pool_automatically", "get_return_bullets_to_pool_automatically");
     ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "texture_rotation"), "set_texture_rotation", "get_texture_rotation");
     ClassDB::add_property("Spawner", PropertyInfo(Variant::FLOAT, "gravity"), "set_gravity", "get_gravity");
+    ClassDB::add_property_group("Spawner", "Collision", "");
+    ClassDB::add_property("Spawner", PropertyInfo(Variant::BOOL, "disable_physics"), "set_disable_physics", "get_disable_physics");
     
     //Binding signals
     ADD_SIGNAL(MethodInfo("bullet_hit", PropertyInfo(Variant::ARRAY, "result"), PropertyInfo(Variant::INT, "bullet_index"), PropertyInfo(Variant::OBJECT, "spawner")));
+
 }
 
 void Spawner::_ready()
@@ -550,12 +558,14 @@ void Spawner::_main(float delta)
 
             animate(bul, i, delta);
 
-            bul->get_query()->set_transform(Transform2D(ang, to_global((upos + velocity/100))));
-            auto result = space_state->intersect_shape(bul->get_query(), bulletType->get_number_of_queries());
-            if (!result.is_empty()){
-                emit_signal("bullet_hit", result, i, this);
-                if (returnBulletsToPoolAutomatically == true){
-                    free_bullet_to_pool(i);
+            if (!disable_physics) {
+                bul->get_query()->set_transform(Transform2D(ang, to_global((upos + velocity/100))));
+                auto result = space_state->intersect_shape(bul->get_query(), bulletType->get_number_of_queries());
+                if (!result.is_empty()){
+                    emit_signal("bullet_hit", result, i, this);
+                    if (returnBulletsToPoolAutomatically == true){
+                        free_bullet_to_pool(i);
+                    }
                 }
             }
 
@@ -931,4 +941,12 @@ void Spawner::set_manual_start(bool b) {
 
 bool Spawner::get_manual_start() const {
     return manualStart;
+}
+
+void Spawner::set_disable_physics(bool value) {
+    disable_physics = value;
+}
+
+bool Spawner::get_disable_physics() const {
+    return disable_physics;
 }

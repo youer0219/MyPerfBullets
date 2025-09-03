@@ -47,6 +47,7 @@ tracked_node = NodePath("../Player")
 homing_weight = 0.1
 rows_in_atlas = 2
 columns_in_atlas = 2
+disable_physics = true
 position = Vector2(543, 193)
 texture = ExtResource("2_11ilv")
 script = ExtResource("4_3a6bq")

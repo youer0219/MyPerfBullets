@@ -103,6 +103,7 @@ private:
     int currentRow = 1;
     int currentColumn = 1;
     Ref<BulletAttachment2DPool> attachment_pool;
+    bool disable_physics = false;
 
 public:
     static void _bind_methods();
@@ -245,6 +246,10 @@ public:
 
     void set_manual_start(bool b);
     bool get_manual_start() const;
+
+    void set_disable_physics(bool value);
+    bool get_disable_physics() const;
+
 };
 
 VARIANT_ENUM_CAST(Spawner::Mode);
