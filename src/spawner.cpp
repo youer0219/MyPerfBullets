@@ -330,7 +330,7 @@ void Spawner::spawn_bullet_self(Vector2 dir) {
                     // 从池中获取附件
                     BulletAttachment2D* attachment = attachment_pool->get_attachment(attachment_scene);
                     if (attachment) {
-                        attachment->set_global_position(bul->get_position());
+                        attachment->set_global_position(to_global(bul->get_position()));
                         attachment->set_spawner(this);
                         attachment->set_bullet_data(bul.ptr());
                         // 保存附件引用到子弹运行时数据
@@ -556,6 +556,11 @@ void Spawner::_main(float delta)
             bul->set_animation_lifetime(bul->get_animation_lifetime()+delta);
             calc_vel(bul, delta);
 
+            BulletAttachment2D* attachment = bul->get_bullet_attachment();
+            if (attachment && attachment->is_active()) {
+                attachment->set_global_position(to_global(bul->get_position()));
+            }
+
             animate(bul, i, delta);
 
             if (!disable_physics) {
@@ -593,11 +598,6 @@ void Spawner::calc_vel(Ref<BulProps> bul, float delta){
     float calculated_speed = bul->get_speed() + bulletType->get_acceleration() *delta;
     float clamped = UtilityFunctions::clampf(calculated_speed, bulletType->get_min_speed(), bulletType->get_max_speed());
     bul->set_speed(clamped);
-
-    BulletAttachment2D* attachment = bul->get_bullet_attachment();
-    if (attachment && attachment->is_active()) {
-        attachment->set_global_position(bul->get_position());
-    }
 
 }
 
