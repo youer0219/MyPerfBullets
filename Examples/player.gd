@@ -22,7 +22,11 @@ func _physics_process(delta):
 				$PlayerShot.set_manual_start(true)
 
 
-func _on_bullet_hit(result, bulletIndex, spawner):
+func _on_bullet_hit(result, bullet_index:int, spawner:Spawner):
 #	spawner.free_bullet_to_pool(bulletIndex) #can be used if returnBulletsToPoolAutomatically is false (see documentation on README)
 	print("hit ", result[0]["collider"])
-
+	
+	var runtime_bullet = spawner.get_bullet_from_index(bullet_index)
+	print(runtime_bullet.runtime_data)
+	var attachment_2d = runtime_bullet.bullet_attachment
+	print(attachment_2d.name)

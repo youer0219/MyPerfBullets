@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://llshgelwdmah"]
+
+[node name="TestBulletAttachment2d" type="BulletAttachment2D"]
+visible = false
