@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0vtdxn7ejeyq"]
+[gd_scene load_steps=12 format=3 uid="uid://c0vtdxn7ejeyq"]
 
 [ext_resource type="PackedScene" uid="uid://duq34uom7vsr6" path="res://addons/PerfBullets/Examples/player.tscn" id="1_avarm"]
 [ext_resource type="PackedScene" uid="uid://llshgelwdmah" path="res://addons/PerfBullets/Examples/bullet_attachment_2ds/test_bullet_attachment_2d.tscn" id="2_3duei"]
 [ext_resource type="Texture2D" uid="uid://cwfrqhc4bodem" path="res://addons/PerfBullets/test_bullet_animation_sheet.png" id="2_11ilv"]
 [ext_resource type="Script" uid="uid://sggaug1xim8i" path="res://addons/PerfBullets/GDScript_Classes/PatternManager.gd" id="3_m01w1"]
 [ext_resource type="Script" uid="uid://cyyi3u8a5elf" path="res://addons/PerfBullets/GDScript_Classes/PatternSpawnerData.gd" id="4_1d6c2"]
+[ext_resource type="Script" uid="uid://d3tixobrn6r8g" path="res://addons/PerfBullets/Examples/time_1.gd" id="4_3a6bq"]
 [ext_resource type="Script" uid="uid://drjvqom0sfe2d" path="res://addons/PerfBullets/GDScript_Classes/BulletBorder.gd" id="4_ajfw1"]
+[ext_resource type="PackedScene" uid="uid://bv565gk7xooct" path="res://addons/PerfBullets/Examples/debug/FrameShow.tscn" id="7_ubw4f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5pet0"]
 
@@ -18,19 +20,23 @@ attachment_scene = ExtResource("2_3duei")
 script = ExtResource("4_1d6c2")
 ID = 1
 time = 0.5
-timerMode = 0
+timerMode = 1
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_avarm")]
 position = Vector2(575, 536)
+collision_mask = 3
 power = 400.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_callback = 0
 
 [node name="Time1" type="Spawner" parent="." node_paths=PackedStringArray("tracked_node") groups=["Spawner"]]
 start_mode = 1
 bullet_type = SubResource("BulletType_3duei")
 pool_count = 10000
-fire_rate = 0.042
+fire_rate = 0.15
 bullets_per_radius = 75
 degrees_between_radii = 180.0
 max_spin = 0.5
@@ -43,6 +49,7 @@ rows_in_atlas = 2
 columns_in_atlas = 2
 position = Vector2(543, 193)
 texture = ExtResource("2_11ilv")
+script = ExtResource("4_3a6bq")
 
 [node name="PatternManager" type="Node" parent="."]
 script = ExtResource("3_m01w1")
@@ -57,5 +64,23 @@ bottomRight = NodePath("Node2D2")
 
 [node name="Node2D2" type="Node2D" parent="BulletBorder"]
 position = Vector2(1151, 647)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrameShow" parent="CanvasLayer/Control" instance=ExtResource("7_ubw4f")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 60.0
+offset_bottom = 40.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="bullet_hit" from="Time1" to="Player" method="_on_bullet_hit"]

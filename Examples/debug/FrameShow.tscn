@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv565gk7xooct"]
+
+[ext_resource type="Script" uid="uid://bbg8s1jxyvchb" path="res://addons/PerfBullets/Examples/debug/frame_show.gd" id="1_ocjss"]
+
+[node name="FrameShow" type="VBoxContainer"]
+custom_minimum_size = Vector2(60, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ocjss")
+
+[node name="Fps_Label" type="Label" parent="."]
+layout_mode = 2
+
+[node name="Physics_2d_Collision_Pairs_Label" type="Label" parent="."]
+layout_mode = 2

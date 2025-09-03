@@ -29,4 +29,15 @@ func _on_bullet_hit(result, bullet_index:int, spawner:Spawner):
 	var runtime_bullet = spawner.get_bullet_from_index(bullet_index)
 	print(runtime_bullet.runtime_data)
 	var attachment_2d = runtime_bullet.bullet_attachment
-	print(attachment_2d.name)
+	if attachment_2d:
+		print("attachment_2d.name: ",attachment_2d.name)
+		print("attachment_2d.global_position: ",attachment_2d.global_position)
+		print("attachment_2d.position: ",attachment_2d.position)
+
+
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.
